@@ -1,0 +1,55 @@
+<div class="panel panel-default">
+  <div class="panel-body {{backgroundColor}}" (click)="employeeSelected()" (mouseleave)="clearBackground()" (mouseenter)="activateBackground()">
+    <div class="row">
+      <div class="col-sm-8">
+        <b>{{employee.firstName}}&nbsp;{{employee.lastName}}</b>
+      </div>
+      <div class="col-sm-4 text-right" (click)="$event.preventDefault()">
+        <div class="btn-group" dropdown dropdown-append-to-body autoClose="disabled" [(isOpen)]="status.isopen" (onToggle)="toggled($event)">
+          <button id="btn-append-to-body" type="button" class="btn btn-primary" dropdownToggle>
+      Tags <span class="caret"></span>
+    </button>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="btn-append-to-body" >
+            <li role="menuitem" *ngFor="let tag of tags" >
+              <form class="form-inline">
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <input type="checkbox" (click)="$event.stopPropagation()" name="isAssigned-{{tag.id}}" [(ngModel)]="tag.isAssigned" >
+                      </div>
+                      <input type="text" class="form-control dropdown-item" name="description-{{tag.id}}"  [(ngModel)]="tag.description" >
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-default" style="min-width: 112px;" (click)="$event.stopPropagation(); updateTag(tag);">Edit</button> /
+                <button type="button" class="btn btn-default" style="min-width: 112px;" (click)="$event.stopPropagation(); deleteTag(tag.id);">Delete</button>
+              </form>
+              <br>
+            </li>
+            <li role="menuitem">
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <input type="text" class="form-control dropdown-item"  placeholder="Add Tag and press enter"  [(ngModel)]="newTag" (click)="$event.stopPropagation()" (keyup.enter)="addTag();">
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        {{employee.designation}} at {{employee.companyName}}
+      </div>
+    </div>
+    <div class="row" style="padding-top: 15px">
+<div class="col-sm-12">
+  <span *ngFor="let tag of employee.tags">      
+        <button class="btn btn-default">{{tag.description}}</button>
+  </span>
+</div>
+</div>
+</div>
+</div>

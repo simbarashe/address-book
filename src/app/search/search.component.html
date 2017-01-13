@@ -1,0 +1,23 @@
+<!-- Custom item template -->
+<template #customItemTemplate let-model="item" let-index="index">
+    {{model.description}}
+</template>
+<input type="text" 
+class="form-control"
+ [(ngModel)]="asyncSelected"
+  [typeahead]="dataSource"
+   [typeaheadItemTemplate]="customItemTemplate"
+    (typeaheadOnSelect)="typeaheadOnSelect($event)"
+     [typeaheadOptionsLimit]="7" 
+     [typeaheadOptionField]="'description'" 
+     [typeaheadMinLength]="0"
+    (typeaheadLoading)="changeTypeaheadLoading($event)"
+    (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+    placeholder="Search by Name, Company or #Tag">
+
+<div *ngIf="contactLoading===true">
+    <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+</div>
+<div *ngIf="contactNoResults===true" class="" style="">
+<i class="glyphicon glyphicon-remove"></i> No Results Found
+</div>    

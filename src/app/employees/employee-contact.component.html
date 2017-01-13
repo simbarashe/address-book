@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>{{employee.firstName}}&nbsp;{{employee.lastName}}</h3>
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let contact of employee.communicationDetails">
+            <td class="col-sm-3">
+              <b>{{contact.type}}:</b>
+            </td>
+            <td class="col-sm-9">
+              {{contact.detail}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

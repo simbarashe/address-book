@@ -1,0 +1,7 @@
+.table th, .table td { 
+     border-top: none !important; 
+ }
+
+.table-responsive {
+    overflow-x:unset ;
+}

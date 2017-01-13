@@ -1,0 +1,13 @@
+<div class="table-responsive">
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let employee of employees;">
+        <td>
+          <app-employee-detail [employee]="employee" (employeeChanged)="employeeChangedHandler($event)"
+          (tagsChanged)="tagsChangedHandler()"
+          (tagAdded)="tagsAddedHandler()"></app-employee-detail>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,7 @@
+<div>Counter: {{counter}}</div>
+<div>Running total of counter values: {{sum}}</div>
+<div>Growing string: {{growingString}}</div>
+<div>
+  <input type="text" name="myFullName" #myFullName (ngmodelchange)="performSearch(myFullName);" > {{myFullName.value}}
+  <input type="text" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" /> {{mymodel}}
+</div>
